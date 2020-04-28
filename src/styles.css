@@ -1,0 +1,62 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+  background-image: url('/assets/images/world map.jpg');
+  background-size: 100%;
+}
+
+/* New font from URL */
+@font-face {
+    font-family: amitaFont;
+    src: url('src/assets/font/amita/amita-bold.ttf');
+  }
+  @font-face {
+    font-family: fancyFont;
+    src: url('src/assets/font/fancypants/FancyPantsNF.ttf');
+  }
+  @font-face {
+    font-family: leroyBrownFont;
+    src: url('src/assets/font/fontleroybrown/FontLeroyBrownNF.ttf');
+  }
+  @font-face {
+    font-family: bisteccaFont;
+    src: url('src/assets/font/bistecca/Bistecca.ttf');
+  }
+  
+  @font-face {
+    font-family: 'reenie beanie';
+    src: url('src/assets/font/reenie-beanie/ReenieBeanie.ttf');
+  }
+/* End Font  */
+
+.header
+{
+   
+    background-color:#0062cc;   
+}
+
+
+.header-title
+{
+    padding: 10px;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+}
+#site-header {box-shadow: 0px 2px 5px #27272780;
+    -webkit-box-shadow: 0px 2px 5px #27272780;
+    -moz-box-shadow: 0px 2px 5px #27272780;
+    position: relative;
+    z-index: 999999;
+}
+
+.worldcount-template
+{
+    padding: 10px;    
+    background-color: #caf9f4d1;
+    border-radius: 40px;   
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.bottomsheet-customwidth {
+  width: 700px;
+}

@@ -1,0 +1,116 @@
+<div class="">
+<div class="row  worldcount-template world-shadow ">
+    <div class="col-sm-2 col-12 col-md-2 col-lg-2 col-xl-2">
+        <div class="world">World  <img src="../../assets/images/globe-gif.gif" width="35" height="35"/></div>
+</div>
+    <div class="col-sm-4 col-12 col-md-4 col-lg-4 col-xl-4">
+        <div class="card confirmed-card">
+            <div class="row"> 
+            <div class="col-sm-5 "><div class="card-header confirmed-card-header"> Confirmed</div></div>
+            <div class="col-sm-7">
+            <div class="card-container">
+               <div class="row"> 
+                   <div class="col-sm-5 col-5 card-label ">Today</div>
+                   <div class="col-sm-7 col-7 card-label ">Total</div>
+                    <div class="col-sm-5 col-5">{{coronaSummary?.Global?.NewConfirmed | number:'.0'}}</div>
+                    <div class="col-sm-7 col-7">{{coronaSummary?.Global?.TotalConfirmed | number:'.0'}}</div>
+                </div>   
+                </div>
+            </div></div>
+          </div>
+    </div>
+    <div class="col-sm-3 col-12 col-md-3 col-lg-3 col-xl-3">
+        <div class="card recoverd-card">
+            <div class="row"> 
+            <div class="col-sm-5 "><div class="card-header recoverd-card-header"> Recovered</div></div>
+            <div class="col-sm-7">
+            <div class="card-container">
+               <div class="row"> 
+                   <div class="col-sm-5 col-5 card-label">Today</div>
+                   <div class="col-sm-7 col-7 card-label ">Total</div>
+                    <div class="col-sm-5 col-5">{{coronaSummary?.Global?.NewRecovered | number:'.0'}}</div>
+                    <div class="col-sm-7 col-7">{{coronaSummary?.Global?.TotalRecovered | number:'.0'}}</div>
+                </div>   
+                </div>
+            </div></div>
+          </div>
+    </div>
+    <div class="col-12 col-sm-3  col-md-3 col-lg-3 col-xl-3">
+        <div class="card deaths-card">
+            <div class="row"> 
+            <div class="col-sm-5 "><div class="card-header deaths-card-header"> Deaths</div></div>
+            <div class="col-sm-7">
+            <div class="card-container">
+               <div class="row"> 
+                   <div class="col-5 col-sm-5  card-label">Today</div>
+                   <div class="col-7 col-sm-7  card-label ">Total</div>
+                    <div class="col-5 col-sm-5 ">{{coronaSummary?.Global?.NewDeaths | number:'.0' }}</div>
+                    <div class="col-7 col-sm-7 ">{{coronaSummary?.Global?.TotalDeaths | number:'.0'}}</div>
+                </div>   
+                </div>
+            </div></div>
+          </div>
+    </div>
+</div>
+<div class="row  justify-content-md-center">
+   <div class="col-sm-10  country-list">
+   <div class="row filter-design"> 
+     <div class="col-sm-2 ">
+     <mat-form-field class="autocomplete-full-width">
+         <input  type="text"
+               placeholder="Select Country"
+               aria-label="Country"
+               matInput
+               [(ngModel)]="selectedCountry" (ngModelChange)="onCountrySelected($event)"
+               [formControl]="myControl"
+               [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option  *ngFor="let country of filteredOptions | async"  [value]="country.Country">
+            {{country.Country}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field> 
+
+    </div>
+    <div class="col-sm-5 ">
+      &nbsp;
+    </div>
+    <div class="col-sm-2">
+      <mat-form-field>
+        <mat-label>Sort Option </mat-label>
+        <mat-select [(ngModel)]="sortOptionValue" (ngModelChange)="onSortOptionSelected($event)">          
+          <mat-option  *ngFor="let option of sortingOptions"  [value]="option.key">
+            {{option.value}}
+          </mat-option>
+          
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-2">
+      <mat-form-field>
+        <mat-label>SortBy </mat-label>
+        <mat-select [(ngModel)]="sortByValue" (ngModelChange)="onSortTypeSelected($event)">           
+          <mat-option  *ngFor="let option of sortBy"   [value]="option.key">
+            {{option.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+    <div class="col-sm-12">
+        <ul>
+            <li *ngFor="let country of countrySummaryLst  | sortBy:sortByValue:sortOptionValue">
+              <a href="javascript:void(0)">
+                <h2>{{country?.Country}}</h2>
+                <p>Tot. Confirmed : {{country?.TotalConfirmed | number}}</p>
+                <p>Tot. Recovered : {{country?.TotalRecovered | number}}</p>
+                <p>Tot. Deaths : {{country?.TotalDeaths | number}}</p>
+                <div><button type="button" (click)="openCountryDetailsSheet(country)" class="btn btn-link more" data-toggle="tooltip" data-placement="top" 
+                  title="Click here to view more details...">More...</button></div>
+              </a>
+            </li>
+        </ul>
+    </div>
+    </div>
+</div>
+</div>

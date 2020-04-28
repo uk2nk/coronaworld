@@ -1,0 +1,65 @@
+
+<div class="row" >
+    <div class="col-sm-5" #heading>
+        <div style="display: table;">
+        <div class="country-header" >{{country.Country}}</div>
+    </div>
+    </div>
+    <div class="col-sm-7">
+        <table class="table table-borderless">
+            <thead>
+              <tr>
+                
+                <th scope="col" class="confirmed">Confirmed</th>
+                <th scope="col" class="recovered">Recoverd</th>
+                <th scope="col" class="deaths">Deaths</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                
+                <td>{{country.NewConfirmed | number}}</td>
+                <td>{{country.NewRecovered | number}}</td>
+                <td>{{country.NewDeaths | number}}</td>
+                <th scope="row" class="fs-10 ">New</th>
+              </tr>
+              <tr>
+                
+                <td>{{country.TotalConfirmed | number}}</td>
+                <td>{{country.TotalRecovered | number}}</td>
+                <td>{{country.TotalDeaths | number}}</td>
+                <th scope="row" class="fs-10 ">Total</th>
+              </tr>              
+            </tbody>
+          </table>
+    </div>
+    
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+  <table class="table table-sm">
+    <thead class="thead">
+      <tr>        
+        <th scope="col">Date</th>
+        <th scope="col">Active</th>
+        <th scope="col">Confirmed</th>
+        <th scope="col">Recovered</th>
+        <th scope="col">Deaths</th>
+        <th scope="col">City/State</th>
+      </tr>
+    </thead>
+    <tbody class="tbody">
+      <tr class="tr" *ngFor="let countryHistory of countryHistoryList">        
+        <td scope="col">{{countryHistory.Date | date:'mediumDate'}}</td>
+        <td scope="col">{{countryHistory.Active | number}}</td>
+        <td scope="col">{{countryHistory.Confirmed | number}}</td>
+        <td scope="col">{{countryHistory.Recovered | number}}</td>
+        <td scope="col">{{countryHistory.Deaths | number}}</td>
+        <td scope="col">{{countryHistory.Province}}</td>
+      </tr>
+      </tbody>
+      </table>
+    </div>
+</div>
