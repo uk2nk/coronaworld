@@ -48,7 +48,7 @@
     "tslint": "~5.15.0",
     "typescript": "~3.4.3"
   },
-    "repository": {
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/uk2nk/coronaworld.git"
   },
